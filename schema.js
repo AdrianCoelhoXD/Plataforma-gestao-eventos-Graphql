@@ -1,4 +1,3 @@
-// schema.js
 const { gql } = require('apollo-server');
 
 const typeDefs = gql`
@@ -21,10 +20,10 @@ const typeDefs = gql`
   }
 
   type Query {
-    eventsByCity(city: String!, date: String): [Event!]!
+    eventsByCity(city: String!, date: String): [Event!]! 
     event(id: ID!): Event
     myEvents(userId: ID!): [Event!]!
-    eventsByTitle(title: String!): [Event!]! # Adicionada para corresponder ao resolver
+    eventsByTitle(title: String!): [Event!]! 
   }
 
   type Mutation {
