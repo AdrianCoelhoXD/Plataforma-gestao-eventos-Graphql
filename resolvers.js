@@ -37,6 +37,22 @@ const resolvers = {
       await newEvent.save();
       return await Event.findById(newEvent._id).populate('organizer').populate('participants');
     },
+    updateEvent: async (_, { id, ...args }) => {
+      const updateData = { ...args };
+      if (updateData.date) {
+        updateData.date = new Date(updateData.date);
+      }
+      const updatedEvent = await Event.findByIdAndUpdate(id, updateData, { new: true })
+        .populate('organizer')
+        .populate('participants');
+      return updatedEvent;
+    },
+    deleteEvent: async (_, { id }) => {
+      const deletedEvent = await Event.findByIdAndDelete(id)
+        .populate('organizer')
+        .populate('participants');
+      return deletedEvent;
+    },
   },
 };
 

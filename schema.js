@@ -36,6 +36,16 @@ const typeDefs = gql`
       online: Boolean
       maxParticipants: Int!
     ): Event!
+    updateEvent(
+      id: ID!
+      title: String
+      description: String
+      date: String
+      location: String
+      online: Boolean
+      maxParticipants: Int
+    ): Event!
+    deleteEvent(id: ID!): Event!
   }
 `;
 
